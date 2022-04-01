@@ -9,9 +9,12 @@ import { useState } from "react";
 function App(): JSX.Element {
   const [taskList, setTaskList] = useState<string[]>([]);
   const [taskInput, setTaskInput] = useState<string>("");
+  const [completedList, setCompletedList] = useState<string[]>([]);
   const [trashList, setTrashList] = useState<string[]>([]);
 
-  const filteredTaskList = taskList.filter((task) => !trashList.includes(task));
+  const filteredTaskList = taskList
+    .filter((task) => !trashList.includes(task))
+    .filter((task) => !completedList.includes(task));
   const taskListElements = filteredTaskList.map((task, index) => {
     return (
       <>
@@ -22,6 +25,13 @@ function App(): JSX.Element {
           }}
         >
           Delete Task
+        </button>
+        <button
+          onClick={() => {
+            setCompletedList((prevCompleteList) => [...prevCompleteList, task]);
+          }}
+        >
+          Complete Task
         </button>
       </>
     );
@@ -44,8 +54,10 @@ function App(): JSX.Element {
       >
         Create Task
       </button>
-      <ol>{taskListElements}</ol>
-      <p>{trashList}</p>
+      <h3>To do:</h3>
+      <ol> {taskListElements}</ol>
+      <p>Trash: {trashList.join(", ")}</p>
+      <p>Completed: {completedList.join(", ")}</p>
     </>
   );
 }
