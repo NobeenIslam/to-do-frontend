@@ -10,6 +10,8 @@ function App(): JSX.Element {
   const [taskList,setTaskList] = useState<string[]>([])
   const [taskInput,setTaskInput]=useState<string>("")
 
+  const taskListElements =taskList.map((task,index)=> <li key = {index}>{task}</li>)
+
   return (
   <>
 
@@ -27,7 +29,7 @@ function App(): JSX.Element {
         setTaskList(prevtaskList => [...prevtaskList, taskInput])
       }}
     >Creat Task</button>
-    <p>{taskList}</p>
+    <ol>{taskListElements}</ol>
 
   </>
   )
