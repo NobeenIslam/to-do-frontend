@@ -16,13 +16,7 @@ function App(): JSX.Element {
   const [taskInput, setTaskInput] = useState<string>("");
 
   const filteredTaskList = taskList;
-  const taskListElements = filteredTaskList.map((task, index) => {
-    return (
-      <section key={index}>
-        <li>{task}</li>
-      </section>
-    );
-  });
+  const taskListElements = filteredTaskList.map((task, index) => <li key={index}>{task}</li>);
 
   return (
     <>
