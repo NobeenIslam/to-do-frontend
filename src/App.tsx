@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { InputControls } from "./components/InputControls";
 
 interface task {
   id: "string";
@@ -29,21 +30,13 @@ function App(): JSX.Element {
   return (
     <>
       <h1>Nobeen's TodoList</h1>
-      <input
-        placeholder="Type to create task"
-        value={taskInput}
-        onChange={(event) => {
-          setTaskInput(event.target.value);
-        }}
-      ></input>
-      <button
-        onClick={() => {
-          axios.post(baseUrl + "/tasks", { taskName: taskInput, id: "" });
-          setPostCounter((postCounter) => postCounter + 1);
-        }}
-      >
-        Create Task
-      </button>
+      <InputControls
+        taskInput={taskInput}
+        baseUrl={baseUrl}
+        postCounter={postCounter}
+        setTaskInput={setTaskInput}
+        setPostCounter={setPostCounter}
+      />
       <h3>To do:</h3>
       <ol>{taskListElements}</ol>
     </>
