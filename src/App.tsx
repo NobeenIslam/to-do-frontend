@@ -14,19 +14,17 @@ const baseUrl =
 function App(): JSX.Element {
   const [taskList, setTaskList] = useState<task[]>([]);
   const [taskInput, setTaskInput] = useState<string>("");
-  const [postCounter,setPostCounter] = useState<number>(0)
+  const [postCounter, setPostCounter] = useState<number>(0);
 
   useEffect(() => {
-    axios
-      .get(baseUrl + "/tasks")
-      .then((response) => {
-        setTaskList(response.data)
-      });
+    axios.get(baseUrl + "/tasks").then((response) => {
+      setTaskList(response.data);
+    });
   }, [postCounter]);
 
-  const taskListElements = taskList.map((task) => 
+  const taskListElements = taskList.map((task) => (
     <li key={task.id}>{task.taskName}</li>
-  );
+  ));
 
   return (
     <>
@@ -41,7 +39,7 @@ function App(): JSX.Element {
       <button
         onClick={() => {
           axios.post(baseUrl + "/tasks", { taskName: taskInput, id: "" });
-          setPostCounter(postCounter => postCounter+1)
+          setPostCounter((postCounter) => postCounter + 1);
         }}
       >
         Create Task
