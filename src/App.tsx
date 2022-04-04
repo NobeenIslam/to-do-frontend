@@ -23,7 +23,7 @@ function App(): JSX.Element {
     });
   }, [taskCounter]);
 
-  const taskListElements = taskList.map((task) => (
+  const taskElements = taskList.map((task) => (
     <section key={task.id}>
       <li>{task.taskName}</li>
       <button
@@ -49,7 +49,7 @@ function App(): JSX.Element {
       />
       <h3>To do:</h3>
       <p>You have {taskCounter} tasks to do</p>
-      <ol>{taskListElements}</ol>
+      <ol>{taskElements}</ol>
       <p>Our back-end server is: {baseUrl}</p>
     </>
   );
