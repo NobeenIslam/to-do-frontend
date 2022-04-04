@@ -41,7 +41,7 @@ function App(): JSX.Element {
         setTaskCounter={setTaskCounter}
       />
       <h3>To do:</h3>
-      <p>You have {taskList.length} tasks to do</p>
+      <p>You have {taskCounter} tasks to do</p>
       <ol>{taskElements}</ol>
       <p>Our back-end server is: {baseUrl}</p>
     </>
