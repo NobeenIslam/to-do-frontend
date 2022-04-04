@@ -1,8 +1,6 @@
 import { InputControlsProps } from "./types";
 import axios from "axios";
 
-
-
 export function InputControls(props: InputControlsProps): JSX.Element {
   function incrementCounter(counter: number) {
     return counter + 1;
@@ -27,6 +25,14 @@ export function InputControls(props: InputControlsProps): JSX.Element {
         }}
       >
         Create Task
+      </button>
+      <button
+        onClick={() => {
+          axios.delete(props.baseUrl + "/tasks");
+          props.setTaskCounter(0);
+        }}
+      >
+        Delete All
       </button>
     </section>
   );

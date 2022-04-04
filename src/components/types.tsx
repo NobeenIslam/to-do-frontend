@@ -11,10 +11,9 @@ export interface taskElementProps {
 }
 
 export interface InputControlsProps {
-    taskInput: string;
-    baseUrl: string;
-    taskCounter: number;
-    setTaskInput: (arg0: string) => void;
-    setTaskCounter: (arg0: number) => void;
-  }
-
+  taskInput: string;
+  baseUrl: string;
+  taskCounter: number;
+  setTaskInput: (arg0: string) => void;
+  setTaskCounter: (arg0: number) => void;
+}
