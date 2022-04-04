@@ -1,12 +1,7 @@
+import { InputControlsProps } from "./types";
 import axios from "axios";
 
-interface InputControlsProps {
-  taskInput: string;
-  baseUrl: string;
-  taskCounter: number;
-  setTaskInput: (arg0: string) => void;
-  setTaskCounter: (arg0: number) => void;
-}
+
 
 export function InputControls(props: InputControlsProps): JSX.Element {
   function incrementCounter(counter: number) {

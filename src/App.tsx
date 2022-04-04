@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { InputControls } from "./components/InputControls";
-
-interface task {
-  id: "string";
-  taskName: "string";
-}
+import { TaskElement } from "./components/TaskElement";
+import { task } from "./components/types";
 
 const baseUrl =
   process.env.NODE_ENV === "production"
@@ -24,17 +21,13 @@ function App(): JSX.Element {
   }, [taskCounter]);
 
   const taskElements = taskList.map((task) => (
-    <section key={task.id}>
-      <li>{task.taskName}</li>
-      <button
-        onClick={() => {
-          axios.delete(baseUrl + `/tasks/${task.id}`);
-          setTaskCounter((taskCounter) => taskCounter - 1);
-        }}
-      >
-        Delete Task
-      </button>
-    </section>
+    <TaskElement
+      key={task.id}
+      task={task}
+      baseUrl={baseUrl}
+      taskCounter={taskCounter}
+      setTaskCounter={setTaskCounter}
+    />
   ));
 
   return (
