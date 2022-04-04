@@ -15,25 +15,26 @@ const baseUrl =
 function App(): JSX.Element {
   const [taskList, setTaskList] = useState<task[]>([]);
   const [taskInput, setTaskInput] = useState<string>("");
-  const [postCounter, setPostCounter] = useState<number>(0);
+  const [taskCounter, setTaskCounter] = useState<number>(0);
 
   useEffect(() => {
     axios.get(baseUrl + "/tasks").then((response) => {
       setTaskList(response.data);
     });
-  }, [postCounter]);
+  }, [taskCounter]);
 
- 
   const taskListElements = taskList.map((task) => (
-  <section key = {task.id}>
-    <li>{task.taskName}</li>
-    <button
-      onClick={()=> {
-        axios.delete(baseUrl+`/tasks/${task.id}`);
-        setPostCounter(postCounter=>postCounter-1)
-    }}
-    >Delete Task</button>
-  </section>
+    <section key={task.id}>
+      <li>{task.taskName}</li>
+      <button
+        onClick={() => {
+          axios.delete(baseUrl + `/tasks/${task.id}`);
+          setTaskCounter((taskCounter) => taskCounter - 1);
+        }}
+      >
+        Delete Task
+      </button>
+    </section>
   ));
 
   return (
@@ -42,11 +43,12 @@ function App(): JSX.Element {
       <InputControls
         taskInput={taskInput}
         baseUrl={baseUrl}
-        postCounter={postCounter}
+        taskCounter={taskCounter}
         setTaskInput={setTaskInput}
-        setPostCounter={setPostCounter}
+        setTaskCounter={setTaskCounter}
       />
       <h3>To do:</h3>
+      <p>You have {taskCounter} tasks to do</p>
       <ol>{taskListElements}</ol>
     </>
   );

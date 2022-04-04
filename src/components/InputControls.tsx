@@ -3,13 +3,12 @@ import axios from "axios";
 interface InputControlsProps {
   taskInput: string;
   baseUrl: string;
-  postCounter: number;
+  taskCounter: number;
   setTaskInput: (arg0: string) => void;
-  setPostCounter: (arg0: number) => void;
+  setTaskCounter: (arg0: number) => void;
 }
 
 export function InputControls(props: InputControlsProps): JSX.Element {
-    
   function incrementCounter(counter: number) {
     return counter + 1;
   }
@@ -29,7 +28,7 @@ export function InputControls(props: InputControlsProps): JSX.Element {
             taskName: props.taskInput,
             id: "",
           });
-          props.setPostCounter(incrementCounter(props.postCounter));
+          props.setTaskCounter(incrementCounter(props.taskCounter));
         }}
       >
         Create Task
