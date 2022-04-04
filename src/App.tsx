@@ -9,7 +9,7 @@ interface task {
 
 const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://todolistnobeen.herokuapp.com/"
+    ? "https://todolistnobeen.herokuapp.com"
     : "http://localhost:4000";
 
 function App(): JSX.Element {
@@ -50,6 +50,7 @@ function App(): JSX.Element {
       <h3>To do:</h3>
       <p>You have {taskCounter} tasks to do</p>
       <ol>{taskListElements}</ol>
+      <p>Our back-end server is: {baseUrl}</p>
     </>
   );
 }
