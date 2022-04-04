@@ -9,7 +9,7 @@ interface task {
 
 const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://todolistnobeen.herokuapp.com/"
+    ? "https://todolistnobeen.herokuapp.com"
     : "http://localhost:4000";
 
 function App(): JSX.Element {
