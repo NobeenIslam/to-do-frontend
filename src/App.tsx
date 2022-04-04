@@ -23,8 +23,17 @@ function App(): JSX.Element {
     });
   }, [postCounter]);
 
+ 
   const taskListElements = taskList.map((task) => (
-    <li key={task.id}>{task.taskName}</li>
+  <section key = {task.id}>
+    <li>{task.taskName}</li>
+    <button
+      onClick={()=> {
+        axios.delete(baseUrl+`/tasks/${task.id}`);
+        setPostCounter(postCounter=>postCounter-1)
+    }}
+    >Delete Task</button>
+  </section>
   ));
 
   return (
