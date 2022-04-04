@@ -50,6 +50,7 @@ function App(): JSX.Element {
       <h3>To do:</h3>
       <p>You have {taskCounter} tasks to do</p>
       <ol>{taskListElements}</ol>
+      <p>Our back-end server is: {baseUrl}</p>
     </>
   );
 }
