@@ -17,7 +17,9 @@ function App(): JSX.Element {
   useEffect(() => {
     axios.get(baseUrl + "/tasks").then((response) => {
       setTaskList(response.data);
+      setTaskCounter(response.data.length)
     });
+    
   }, [taskCounter]);
 
   const taskElements = taskList.map((task) => (
