@@ -13,13 +13,14 @@ function App(): JSX.Element {
   const [taskList, setTaskList] = useState<task[]>([]);
   const [taskInput, setTaskInput] = useState<string>("");
   const [taskCounter, setTaskCounter] = useState<number>(0);
+  const [editCounter, setEditCounter] = useState<number>(0)
 
   useEffect(() => {
     axios.get(baseUrl + "/tasks").then((response) => {
       setTaskList(response.data);
       setTaskCounter(response.data.length);
     });
-  }, [taskCounter]);
+  }, [taskCounter, editCounter]);
 
   const taskElements = taskList.map((task) => (
     <TaskElement
@@ -27,7 +28,9 @@ function App(): JSX.Element {
       task={task}
       baseUrl={baseUrl}
       taskCounter={taskCounter}
+      editCounter={editCounter}
       setTaskCounter={setTaskCounter}
+      setEditCounter={setEditCounter}
     />
   ));
 

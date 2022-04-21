@@ -4,7 +4,6 @@ import EditTaskControls from "./EditTaskControls";
 import axios from "axios";
 
 export function TaskElement(props: taskElementProps): JSX.Element {
-  console.log("This is a new render", Math.random())
 
   const [inputToEditTask, setInputToEditTask] = useState<string>("");
   const [isEditTaskSelected, setIsEditTaskSelected] = useState<boolean>(false);
@@ -18,6 +17,7 @@ export function TaskElement(props: taskElementProps): JSX.Element {
       { taskName: inputToEditTask }
     )
     setIsEditTaskSelected(false)
+    props.setEditCounter(props.editCounter + 1)
 
 
   }

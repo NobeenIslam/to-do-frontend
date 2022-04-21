@@ -7,7 +7,9 @@ export interface taskElementProps {
   task: task;
   baseUrl: string;
   taskCounter: number;
+  editCounter: number;
   setTaskCounter: (arg0: number) => void;
+  setEditCounter: (arg0: number) => void;
 }
 
 export interface InputControlsProps {
