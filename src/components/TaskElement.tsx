@@ -8,10 +8,6 @@ export function TaskElement(props: taskElementProps): JSX.Element {
   const [inputToEditTask, setInputToEditTask] = useState<string>("");
   const [isEditTaskSelected, setIsEditTaskSelected] = useState<boolean>(false);
 
-  function handleClickEditTask() {
-    setIsEditTaskSelected(true);
-  }
-
   function handleSubmitEditTask() {
     axios.patch(props.baseUrl + `/tasks/${props.task.id}`,
       { taskName: inputToEditTask }
@@ -22,9 +18,6 @@ export function TaskElement(props: taskElementProps): JSX.Element {
 
   }
 
-  function decrementCounter(counter: number) {
-    return counter - 1;
-  }
 
   return (
     <section>
@@ -32,12 +25,12 @@ export function TaskElement(props: taskElementProps): JSX.Element {
       <button
         onClick={() => {
           axios.delete(props.baseUrl + `/tasks/${props.task.id}`);
-          props.setTaskCounter(decrementCounter(props.taskCounter));
+          props.setTaskCounter(props.taskCounter - 1);
         }}
       >
         Delete Task
       </button>
-      <button onClick={handleClickEditTask}>Edit Task</button>
+      <button onClick={() => { setIsEditTaskSelected(true) }}>Edit Task</button>
       {isEditTaskSelected && (
         <EditTaskControls
           inputToEditTask={inputToEditTask}
