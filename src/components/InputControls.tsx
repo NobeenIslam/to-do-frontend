@@ -2,7 +2,6 @@ import { InputControlsProps } from "./types";
 import axios from "axios";
 
 export function InputControls(props: InputControlsProps): JSX.Element {
-
   return (
     <section>
       <input
