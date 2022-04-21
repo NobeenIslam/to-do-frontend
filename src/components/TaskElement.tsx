@@ -4,15 +4,15 @@ import EditTaskControls from "./EditTaskControls";
 import axios from "axios";
 
 export function TaskElement(props: taskElementProps): JSX.Element {
-  const [inputToEditTask, setInputToEditTask] = useState<string>("")
-  const [isEditTaskSelected, setIsEditTaskSelected] = useState<boolean>(false)
+  const [inputToEditTask, setInputToEditTask] = useState<string>("");
+  const [isEditTaskSelected, setIsEditTaskSelected] = useState<boolean>(false);
 
   function handleClickEditTask() {
-    setIsEditTaskSelected(true)
+    setIsEditTaskSelected(true);
   }
 
   function handleSubmitEditTask() {
-    setIsEditTaskSelected(false)
+    setIsEditTaskSelected(false);
   }
 
   function decrementCounter(counter: number) {
@@ -30,18 +30,14 @@ export function TaskElement(props: taskElementProps): JSX.Element {
       >
         Delete Task
       </button>
-      <button
-        onClick={handleClickEditTask}
-      >
-        Edit Task
-      </button>
-      {isEditTaskSelected &&
+      <button onClick={handleClickEditTask}>Edit Task</button>
+      {isEditTaskSelected && (
         <EditTaskControls
           inputToEditTask={inputToEditTask}
           setInputToEditTask={setInputToEditTask}
           handleSubmitEditTask={handleSubmitEditTask}
         />
-      }
+      )}
     </section>
   );
 }
