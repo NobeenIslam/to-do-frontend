@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { taskElementProps } from "./types";
+import EditTaskControls from "./EditTaskControls";
 import axios from "axios";
 
 export function TaskElement(props: taskElementProps): JSX.Element {
@@ -35,20 +36,11 @@ export function TaskElement(props: taskElementProps): JSX.Element {
         Edit Task
       </button>
       {isEditTaskSelected &&
-        <>
-          <input
-            placeholder="Edit Task"
-            value={inputToEditTask}
-            onChange={(event) => setInputToEditTask(event.target.value)}
-          >
-          </input>
-          <button
-            onClick={handleSubmitEditTask}
-          >
-            Submit Edit
-          </button>
-        </>
-
+        <EditTaskControls
+          inputToEditTask={inputToEditTask}
+          setInputToEditTask={setInputToEditTask}
+          handleSubmitEditTask={handleSubmitEditTask}
+        />
       }
     </section>
   );
